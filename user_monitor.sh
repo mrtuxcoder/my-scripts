@@ -1,51 +1,45 @@
 #!/bin/bash
 
-#User Monitor Script
-#Author: George
-#check root access
-set -e
+# User Monitor Script
+# Author: George
+# Version: 1.0
+
+# Check root access
 if [[ $EUID -ne 0 ]]; then
-	echo "This script need root privilage"
-	exit 1
+    echo "ERROR: This script requires root privileges" >&2
+    exit 1
 fi
-#create output log file
-OUTPUT_FILE="/var/log/user_report_$(date '+%Y%m%d').log"
 
-echo "=== USER ACCOUNT REPORT ===" > $OUTPUT_FILE
-echo $(date '+%Y-%m-%d %H%M%S') >>  $OUTPUT_FILE
-#print  total user count
-TOTAL_USERS=$(wc -l < /etc/passwd)
+# Create output log file
+OUTPUT_FILE="/var/log/user_report_$(date '+%Y%m%d_%H%M%S').log"
 
-echo "Total Users: $TOTAL_USERS" >> $OUTPUT_FILE
-#print logged users
-echo "Logged in  Users: $(who | wc -l )" >> $OUTPUT_FILE
+echo "Generating user report to: $OUTPUT_FILE"
 
-echo "=== USERS LIST ===" >> $OUTPUT_FILE
-#print all user list
-cut -d: -f1 /etc/passwd >> $OUTPUT_FILE
+{
+echo "=== USER ACCOUNT REPORT ==="
+echo "Report generated: $(date '+%Y-%m-%d %H:%M:%S')"
+echo "Hostname: $(hostname)"
 
+echo -e "\n=== SYSTEM STATISTICS ==="
+echo "Total Users: $(wc -l < /etc/passwd)"
+echo "Logged in Users: $(who | wc -l)"
 
-echo "===Currently Logged in Users ===" >> $OUTPUT_FILE
-#print currently logged in users
-who >> $OUTPUT_FILE
+echo -e "\n=== ALL USERS ==="
+cut -d: -f1 /etc/passwd
 
+echo -e "\n=== CURRENTLY LOGGED IN ==="
+who
 
-echo "=== USERS without password===" >> $OUTPUT_FILE
-#print users without password
-awk -F: '$2 !~ /^[!*]/ && $2 != "" {print $1}' /etc/shadow >> $OUTPUT_FILE
+echo -e "\n=== USERS WITH NO PASSWORD ==="
+awk -F: '($2 == "" || $2 ~ /^[!*]/) {print $1}' /etc/shadow 2>/dev/null || echo "Cannot read /etc/shadow"
 
-echo "=== USERS with sudo access ===" >> $OUTPUT_FILE
-#print users with sudo access
-getent group sudo >> $OUTPUT_FILE
+echo -e "\n=== SUDO USERS ==="
+getent group sudo | cut -d: -f4 | tr ',' '\n'
 
-echo "=== Last 5 Logins ===" >> $OUTPUT_FILE
-#print last 5 login entry
-last -n 5 >> $OUTPUT_FILE
+echo -e "\n=== LAST LOGINS ==="
+last -n 5
 
+} > "$OUTPUT_FILE" 2>&1
 
-
-
-
-
-
-
+echo "Report completed: $OUTPUT_FILE"
+echo "File size: $(wc -l < "$OUTPUT_FILE") lines"
