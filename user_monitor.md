@@ -104,10 +104,10 @@ Schedule with cron for regular monitoring:
 - `/var/log/wtmp` - Login records (via `last` command)
 
 ## Author
-George - System Administrator
+ Guganraj a.k.a George
 
 ## Version
-1.1
+1.0
 
 ## License
 Open source - free for personal and professional use
