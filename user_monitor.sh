@@ -45,4 +45,11 @@ last -n 5
 } > "$OUTPUT_FILE" 2>&1
 
 echo "Report completed: $OUTPUT_FILE"
-echo "Line Count: $(wc -l < "$OUTPUT_FILE") lines"
+echo "Line Count: $(wc -l < "$OUTPUT_FILE") lines"# Script: user_monitor.sh
+# Description: This is a sample user_monitor script
+# Created: Friday 06 February 2026 06:15:21 PM IST
+
+echo 'Running user_monitor...'
+echo 'Script functionality would go here'
+
+# Add your actual script logic below
