@@ -7,7 +7,6 @@ A collection of Linux automation scripts for system administration and monitorin
 | Filename | Description | Category | Tags |
 |----------|-------------|----------|------|
 | user_monitor.sh | Real-time user login monitoring and security auditing | Security | monitoring,security,users |
-| backup_monitor.sh | backup everything | backup script | backup,user,data |
 
 
 ## 🚀 Usage
