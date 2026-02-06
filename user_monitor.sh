@@ -30,8 +30,11 @@ cut -d: -f1 /etc/passwd
 echo -e "\n=== CURRENTLY LOGGED IN ==="
 who
 
+echo -e "\n=== LOCKED USERS ==="
+awk -F: '($2 ~ /^(\!|\*)/) {print $1}' /etc/shadow 2>/dev/null | grep . || echo "No locked accounts found"
+
 echo -e "\n=== USERS WITH NO PASSWORD ==="
-awk -F: '($2 == "" || $2 ~ /^[!*]/) {print $1}' /etc/shadow 2>/dev/null || echo "Cannot read /etc/shadow"
+awk -F: '($2 == "") {print $1}' /etc/shadow 2>/dev/null | grep . || echo "No accounts with empty password"
 
 echo -e "\n=== SUDO USERS ==="
 getent group sudo | cut -d: -f4 | tr ',' '\n'
@@ -42,4 +45,4 @@ last -n 5
 } > "$OUTPUT_FILE" 2>&1
 
 echo "Report completed: $OUTPUT_FILE"
-echo "File size: $(wc -l < "$OUTPUT_FILE") lines"
+echo "Line Count: $(wc -l < "$OUTPUT_FILE") lines"
