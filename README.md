@@ -30,7 +30,6 @@ A collection of Linux automation scripts for system administration and monitorin
 | cron_backup.sh | ⏰ | Automated cron job backup | Backup | cron,backup,automation |
 | user_audit.sh | 👤 | Comprehensive user account auditing | Security | audit,users,security |
 | disk_usage.sh | 📈 | Disk usage analysis and reporting | Monitoring | disk,storage,analysis |
-| service_monitor.sh | 🖥️ | Monitor system services status | Monitoring | services,monitoring,status |
 
 
 ## 🚀 Usage
