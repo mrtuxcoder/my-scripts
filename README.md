@@ -4,9 +4,9 @@ A collection of Linux automation scripts for system administration and monitorin
 
 ## 📦 Scripts Library
 
-| Filename | Emoji | Description | Category | Tags |
-|----------|-------|-------------|----------|------|
-| user_monitor.sh | 👁️ | Real-time user login monitoring and security auditing | Security | monitoring,security,users |
+| Filename | Description | Category | Tags |
+|----------|-------------|----------|------|
+| user_monitor.sh | Real-time user login monitoring and security auditing | Security | monitoring,security,users |
 
 
 
