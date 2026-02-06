@@ -1,16 +1,5 @@
 # my-scripts 🛠️
 
-System administration and automation scripts.
-
-## 📦 Scripts
-
-| Script | Description | Docs |
-|--------|-------------|------|
-| `user_monitor.sh` | User account monitoring & security audit | [Read](./user_monitor.md) |
-
-
- ## test
-
 A collection of Linux automation scripts for system administration and monitoring.
 
 ## 📦 Scripts Library
@@ -18,8 +7,7 @@ A collection of Linux automation scripts for system administration and monitorin
 | Filename | Emoji | Description | Category | Tags |
 |----------|-------|-------------|----------|------|
 | user_monitor.sh | 👁️ | Real-time user login monitoring and security auditing | Security | monitoring,security,users |
-| backup_script.sh | 💾 | Automated incremental backup with rotation | Backup | backup,automation,rotation |
-  system_security.sh | X | blah blah |
+
 
 
 ## 🚀 Usage
