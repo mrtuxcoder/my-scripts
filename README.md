@@ -19,7 +19,7 @@ A collection of Linux automation scripts for system administration and monitorin
 |----------|-------|-------------|----------|------|
 | user_monitor.sh | 👁️ | Real-time user login monitoring and security auditing | Security | monitoring,security,users |
 | backup_script.sh | 💾 | Automated incremental backup with rotation | Backup | backup,automation,rotation |
-  systeam_security.sh | 👁️ | blah blah |
+  system_security.sh | 👁️ | blah blah |
 
 
 ## 🚀 Usage
